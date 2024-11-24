@@ -1,20 +1,24 @@
 const buttons = document.getElementById("buttons");
 const clock = document.getElementById("clock");
 
+const  goFullScreen = () => {
+    const element = document.documentElement;
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) { // Firefox
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) { // IE/Edge
+        element.msRequestFullscreen();
+    }
+}
+
 const deviceDetect = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 if (deviceDetect) {
     playButton.innerHTML = "PLAY!";
     playButtonMulti.style.display = "none";
     clock.style.display = "none";
-
-    function setDynamicHeight() {
-        const container = document.getElementById('container');
-        container.style.height = `${window.innerHeight}px`;
-    }
-    
-    // Zavolat funkci při načtení a změně velikosti okna
-    window.addEventListener('load', setDynamicHeight);
-    window.addEventListener('resize', setDynamicHeight);
 }
 
 const go_up = () => {
