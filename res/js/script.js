@@ -3619,11 +3619,7 @@ const howManyLevelsDoneFunction = () => {
 
 window.onload =  () => {
 
-    if(!deviceDetect){
-        window.scrollTo(0, 0);
-    }else{
-        window.scrollTo(0, 500);
-    }
+    window.scrollTo(0, 0);
 
     //This will load you progress which was saved
     //Load Levels
