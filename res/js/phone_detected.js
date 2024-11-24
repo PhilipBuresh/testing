@@ -6,6 +6,15 @@ if (deviceDetect) {
     playButton.innerHTML = "PLAY!";
     playButtonMulti.style.display = "none";
     clock.style.display = "none";
+
+    function setDynamicHeight() {
+        const container = document.getElementById('container');
+        container.style.height = `${window.innerHeight}px`;
+    }
+    
+    // Zavolat funkci při načtení a změně velikosti okna
+    window.addEventListener('load', setDynamicHeight);
+    window.addEventListener('resize', setDynamicHeight);
 }
 
 const go_up = () => {
