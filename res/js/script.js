@@ -386,7 +386,6 @@ let setTimeoutDoor;
 
 //--------------------------------------------------Play Button
 playButton.onclick = () => {
-    goFullScreen();
     playButton.style.animationName = "blink"
     playButton.style.animationPlayState = "running";
     black.style.opacity = "1";
