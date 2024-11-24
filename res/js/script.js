@@ -756,6 +756,9 @@ const movingCharactersAndFullBlack = () => {
         chooseDungeon.style.animationPlayState = "running";
         setSkins();
         achievementPinkColor();
+        if (deviceDetect) {
+            buttons.style.display = "block";
+        }
     }, 1000);
 }
 
@@ -3151,6 +3154,9 @@ button_menu.onclick = () => {
         playButtonMulti.style.pointerEvents = "auto";
         if(!deviceDetect){
             playButtonMulti.style.display = "block";
+        }
+        if (deviceDetect) {
+            buttons.style.display = "none";
         }
         creditsButton.style.display = "block";
         achievementsButton.style.display = "block";
@@ -5688,12 +5694,16 @@ let space = " ";
 let escShowed = false;
 let inGame = false;
 
-window.addEventListener("keydown", (event) => {
+const afkAchievementProgress = () => {
     if(inGame && !achievementAfkCompleted){
         clearInterval(afkTimerInterval);
         afkTimeCounter = 0;
         afkTimer();
     }
+}
+
+window.addEventListener("keydown", (event) => {
+    afkAchievementProgress();
     // W - Jumping / Climbing Up
     if ((event.key == up || event.key == UP) && player1.canStandUp && inGame && !player1.isJumping && !player1.flying) {
         isJumping = true;

@@ -3,13 +3,13 @@ const clock = document.getElementById("clock");
 
 const deviceDetect = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 if (deviceDetect) {
-    buttons.style.display = "block";
     playButton.innerHTML = "PLAY!";
     playButtonMulti.style.display = "none";
     clock.style.display = "none";
 }
 
 const go_up = () => {
+    afkAchievementProgress();
     if (player1.canStandUp && inGame && !player1.isJumping && !player1.flying) {
         isJumping = true;
         if(player1.ladderCol){
@@ -65,6 +65,7 @@ const go_up = () => {
 }
 
 const go_up_return = () => {
+    afkAchievementProgress();
     if(!player1.flying){
         player1.isJumping = false;
         player1.jumpIntervalSet = false;
@@ -84,6 +85,7 @@ const go_up_return = () => {
 }
 
 const go_punch = () => {
+    afkAchievementProgress();
     if(!player1.alreadyPunched && !player1.ladderCol && !player1.inPipe && inGame){
         punch(player1);
     }
@@ -91,10 +93,12 @@ const go_punch = () => {
 }
 
 const go_punch_return = () => {
+    afkAchievementProgress();
     player1.alreadyPunched = false;
 }
 
 const go_down = () => {
+    afkAchievementProgress();
     if(!player1.crouched && !player1.punched && !player1.downPressed && !player1.ladderCol && inGame){
         crouch(player1);     
     } else if (player1.ladderCol && !player1.alreadyGoingDown){
@@ -105,6 +109,7 @@ const go_down = () => {
 }
 
 const go_down_return = () => {
+    afkAchievementProgress();
     player1.downPressed = false;
         if(player1.velocity <= 0.35 && player1.crouched == true && player1.canStandUp == true && player1.ladderCol == false){
             unCrouch(player1);
@@ -123,6 +128,7 @@ const go_down_return = () => {
 }
 
 const go_right = () => {
+    afkAchievementProgress();
     if (player1.isMovingRight == false) {
         player1.isMovingRight = true;
         player1.turnedRight = true;
@@ -133,6 +139,7 @@ const go_right = () => {
 }
 
 const go_right_return = () => {
+    afkAchievementProgress();
     player1.isMovingRight = false;
     if(player1.velocityRight <= player1.velocityLeft && player1.isMovingLeft){ //Fixing switching sides
         player1.turnedLeft = true;
@@ -141,6 +148,7 @@ const go_right_return = () => {
 }
 
 const go_left = () => {
+    afkAchievementProgress();
     if (player1.isMovingLeft == false) {
         player1.isMovingLeft = true;
         player1.turnedRight = false;
@@ -151,6 +159,7 @@ const go_left = () => {
 }
 
 const go_left_return = () => {
+    afkAchievementProgress();
     player1.isMovingLeft = false;
     if(player1.velocityRight > player1.velocityLeft && player1.isMovingRight){ //Fixing switching sides
         player1.turnedLeft = false;
