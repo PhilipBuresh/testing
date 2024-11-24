@@ -1,25 +1,11 @@
 const buttons = document.getElementById("buttons");
 const clock = document.getElementById("clock");
 
-const goFullscreen = () => {
-    const element = document.documentElement;
-    if (element.requestFullscreen) {
-        element.requestFullscreen();
-    } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-    } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-    }
-}
-
 const deviceDetect = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 if (deviceDetect) {
     playButton.innerHTML = "PLAY!";
     playButtonMulti.style.display = "none";
     clock.style.display = "none";
-    goFullscreen();
 }
 
 const go_up = () => {
