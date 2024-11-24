@@ -19,6 +19,9 @@ if (deviceDetect) {
     playButton.innerHTML = "PLAY!";
     playButtonMulti.style.display = "none";
     clock.style.display = "none";
+    document.body.onclick = () => {
+        goFullScreen();
+    }
 }
 
 const go_up = () => {
