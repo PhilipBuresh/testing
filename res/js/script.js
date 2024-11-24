@@ -3625,12 +3625,6 @@ window.onload =  () => {
         window.scrollTo(0, 500);
     }
 
-    if(!deviceDetect){
-        window.scrollTo(0, 0);
-    }else{
-        window.scrollTo(0, 1);
-    }
-
     //This will load you progress which was saved
     //Load Levels
     for (let i = 0; i <= 15; i++) {
